@@ -1,0 +1,12 @@
+﻿@model List<Folder>
+
+<h2>Root folders</h2>
+
+<ul>
+    @foreach (var folder in Model)
+    {
+            <li>
+                <a asp-action="Details" asp-route-id="@folder.FolderId">@folder.Name</a>
+            </li>
+    }
+</ul>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Folder>
+@{
+    ViewData["Title"] = "Folders";
+}
+
+<h2>Student Body Statistics</h2>
+
+<table>
+    <tr> 
+        <th>
+            id
+        </th>
+        <th>
+            Name of folder
+        </th>
+        <th>
+            Path
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                        <p>@item.FolderId</p>
+                </td>
+                <td>
+                        <p>@item.Name</p>
+                </td>
+                <td>
+                        <p>@item.Path</p>
+                </td>
+            </tr>
+    }
+</table>

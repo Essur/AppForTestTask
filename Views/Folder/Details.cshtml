@@ -1,0 +1,20 @@
+﻿@model List<Folder>
+
+<h2>Folder Details</h2>
+
+<p>
+    Current Folder: @ViewData["CurrentFolder"]
+</p>
+
+<ul>
+    @foreach (var folder in Model)
+    {
+            <li>
+                <a asp-action="Details" asp-route-id="@folder.FolderId">@folder.Name</a>
+            </li>
+    }
+</ul>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
