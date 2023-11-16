@@ -1,0 +1,42 @@
+[
+  {
+    "FolderId": 1,
+    "Name": "Creating Digital Images",
+    "Path": "/"
+  },
+  {
+    "FolderId": 2,
+    "Name": "Resources",
+    "Path": "/1/"
+  },
+  {
+    "FolderId": 3,
+    "Name": "Primary Sources",
+    "Path": "/1/1/"
+  },
+  {
+    "FolderId": 4,
+    "Name": "Secondary Sources",
+    "Path": "/1/2/"
+  },
+  {
+    "FolderId": 5,
+    "Name": "Evidence",
+    "Path": "/2/"
+  },
+  {
+    "FolderId": 6,
+    "Name": "Graphic Products",
+    "Path": "/3/"
+  },
+  {
+    "FolderId": 7,
+    "Name": "Process",
+    "Path": "/3/1/"
+  },
+  {
+    "FolderId": 8,
+    "Name": "Final Product",
+    "Path": "/3/2/"
+  }
+]

@@ -16,6 +16,7 @@ internal class Program
 			{
 				var context = services.GetRequiredService<DbForTestTaskContext>();
 				DbInitializer.Initialize(context);
+				FileInitializer.GenerateFile();
 			}
 			catch (Exception ex)
 			{

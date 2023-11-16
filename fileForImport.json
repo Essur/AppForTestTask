@@ -1,0 +1,57 @@
+[
+  {
+    "FolderId": 0,
+    "Name": "New folders for test",
+    "Path": "/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Resources",
+    "Path": "/1/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Primary Sources",
+    "Path": "/1/1/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Secondary Sources",
+    "Path": "/1/2/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Third Sources",
+    "Path": "/1/3/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Evidence",
+    "Path": "/2/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Record",
+    "Path": "/2/1"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Montage",
+    "Path": "/3/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Process",
+    "Path": "/3/1/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "References",
+    "Path": "/3/2/"
+  },
+  {
+    "FolderId": 0,
+    "Name": "Final Product",
+    "Path": "/3/3/"
+  }
+]

@@ -1,7 +1,6 @@
 ﻿using AppForTestTask.Data;
-using Microsoft.AspNetCore.Mvc;
+using AppForTestTask.Services;
 using Microsoft.EntityFrameworkCore;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace AppForTestTask
 {
@@ -25,21 +24,15 @@ namespace AppForTestTask
 			services.AddDbContext<DbForTestTaskContext>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<FolderImportExportService>();
+
+            services.AddMvc();
 		}
 		
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app)
 		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
-			else
-			{
-				app.UseExceptionHandler("/Home/Error");
-				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-				app.UseHsts();
-			}
+			app.UseExceptionHandler("/Home/Error");
+			app.UseHsts();
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();

@@ -27,7 +27,7 @@ namespace AppForTestTask.Controllers
         public async Task<IActionResult> Index(string path)
         {
             var rootFolders = await _context.Folders
-                .Where(f => f.Path == "/")
+                .Where(f => f.Path.Equals("/"))
                 .ToListAsync();
 
             return View(rootFolders);
