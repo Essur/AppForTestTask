@@ -1,20 +1,17 @@
-﻿using AppForTestTask.Data;
+﻿using System.Diagnostics;
 using AppForTestTask.Models;
 using AppForTestTask.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+
 
 namespace AppForTestTask.Controllers
 {
     public class ImportExportController : Controller
     {
-        DbForTestTaskContext _context;
         FolderImportExportService _service;
 
-        public ImportExportController(DbForTestTaskContext context, FolderImportExportService service)
+        public ImportExportController(FolderImportExportService service)
         {
-            _context = context;
             _service = service;
         }
 

@@ -1,9 +1,6 @@
 ﻿using AppForTestTask.Data;
-using AppForTestTask.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Data.Common;
-using System.IO;
 
 namespace AppForTestTask.Controllers
 {
@@ -23,7 +20,6 @@ namespace AppForTestTask.Controllers
             return View(folders);
         }
 
-        // GET: /Folder
         public async Task<IActionResult> Index(string path)
         {
             var rootFolders = await _context.Folders
@@ -33,7 +29,6 @@ namespace AppForTestTask.Controllers
             return View(rootFolders);
         }
 
-        // GET: /Folder/Details/
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

@@ -1,21 +1,13 @@
-﻿using AppForTestTask.Data;
-using AppForTestTask.Models;
+﻿using AppForTestTask.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Data.Common;
 using System.Diagnostics;
 
 namespace AppForTestTask.Controllers
 {
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
-		private readonly DbForTestTaskContext _context;
-
-		public HomeController(ILogger<HomeController> logger, DbForTestTaskContext context)
+		public HomeController()
 		{
-			_logger = logger;
-			_context= context;
 		}
 
 		public IActionResult Index()

@@ -1,33 +1,52 @@
 using AppForTestTask.Data;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore;
-using AppForTestTask;
+using Microsoft.EntityFrameworkCore;
+using AppForTestTask.Services;
 
 internal class Program
 {
 	private static void Main(string[] args)
 	{
-		var host = CreateWebHostBuilder(args).Build();
+        var builder = WebApplication.CreateBuilder(args);
 
-		using (var scope = host.Services.CreateScope())
+        builder.Services.AddControllersWithViews();
+        var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+        builder.Services.AddDbContext<DbForTestTaskContext>(options => options.UseSqlServer(connection));
+
+		builder.Services.AddScoped<FolderImportExportService>();
+		builder.Services.AddScoped<DbInitializer>();
+
+        var app = builder.Build();
+
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseExceptionHandler("/Home/Error");
+            app.UseHsts();
+        }
+
+		try
 		{
-			var services = scope.ServiceProvider;
-			try
-			{
-				var context = services.GetRequiredService<DbForTestTaskContext>();
-				DbInitializer.Initialize(context);
-				FileInitializer.GenerateFile();
-			}
-			catch (Exception ex)
-			{
-				var logger = services.GetRequiredService<ILogger<Program>>();
-				logger.LogError(ex, "An error occurred while seeding the database.");
-			}
+			var dbInitializer = app.Services.CreateScope().ServiceProvider.GetRequiredService<DbInitializer>();
+			dbInitializer.Initialize();
 		}
+		catch (Exception ex)
+		{
+			var logger = app.Services.CreateScope().ServiceProvider.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred while seeding the database.");
+		}
+        
+		FileInitializer.GenerateFile();
 
-		host.Run();
-	}
-	public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-			WebHost.CreateDefaultBuilder(args)
-				.UseStartup<Startup>();
+        app.UseHttpsRedirection();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthorization();
+
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        app.Run();
+    }
 }

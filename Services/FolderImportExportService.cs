@@ -21,12 +21,19 @@ namespace AppForTestTask.Services
                 var json = File.ReadAllText(filePath);
                 var folders = JsonConvert.DeserializeObject<List<Folder>>(json);
 
-                var oldFolders = await _context.Folders.ToListAsync();
-                _context.Folders.RemoveRange(oldFolders);
-                await _context.SaveChangesAsync();
-                ExportOldValuesFromTable(oldFolders);
+                if (_context.Folders != null)
+                {
+                    var oldFolders = await _context.Folders.ToListAsync();
+                    _context.Folders.RemoveRange(oldFolders);
+                    await _context.SaveChangesAsync();
+                    ExportOldValuesFromTable(oldFolders);
 
-                _context.Folders.AddRange(folders);
+                    if (folders != null)
+                    {
+                        _context.Folders.AddRange(folders);
+                    }
+                }
+                
                 await _context.SaveChangesAsync();
                 return true;
             }

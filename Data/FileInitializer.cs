@@ -15,7 +15,7 @@ namespace AppForTestTask.Data
                     new Folder { Name = "Secondary Sources", Path = "/1/2/"},
                     new Folder { Name = "Third Sources", Path = "/1/3/"},
                     new Folder { Name = "Evidence", Path = "/2/"},
-                    new Folder { Name = "Record", Path = "/2/1"},
+                    new Folder { Name = "Record", Path = "/2/1/"},
                     new Folder { Name = "Montage", Path = "/3/" },
                     new Folder { Name = "Process", Path = "/3/1/" },
                     new Folder { Name = "References", Path = "/3/2/" },

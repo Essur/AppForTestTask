@@ -1,16 +1,22 @@
 ﻿using AppForTestTask.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace AppForTestTask.Data
 {
 	public class DbInitializer
 	{
-		public static void Initialize(DbForTestTaskContext context)
-		{
-			context.Database.EnsureDeleted();
-			context.Database.EnsureCreated();
+		private readonly DbForTestTaskContext _context;
 
-            if (!context.Folders.Any())
+        public DbInitializer(DbForTestTaskContext context)
+        {
+            _context = context;
+        }
+
+        public void Initialize()
+		{
+			_context.Database.EnsureDeleted();
+			_context.Database.EnsureCreated();
+
+            if (!_context.Folders.Any())
 			{
                 var folders = new Folder[]
                 {
@@ -23,8 +29,8 @@ namespace AppForTestTask.Data
 					new Folder { Name = "Process", Path = "/3/1/" },
 					new Folder { Name = "Final Product", Path = "/3/2/" },
                 };
-                context.AddRange(folders);
-				context.SaveChanges();
+                _context.AddRange(folders);
+				_context.SaveChanges();
 			}
 		}
 	}
